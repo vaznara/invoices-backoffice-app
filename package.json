@@ -1,5 +1,5 @@
 {
-  "name": "invocies-backoffice-app",
+  "name": "invoices-backoffice-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "invocies-backoffice-app": {
+    "invoices-backoffice-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/invocies-backoffice-app",
+            "outputPath": "dist/invoices-backoffice-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "invocies-backoffice-app:build:production"
+              "buildTarget": "invoices-backoffice-app:build:production"
             },
             "development": {
-              "buildTarget": "invocies-backoffice-app:build:development"
+              "buildTarget": "invoices-backoffice-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "invocies-backoffice-app:build"
+            "buildTarget": "invoices-backoffice-app:build"
           }
         },
         "test": {

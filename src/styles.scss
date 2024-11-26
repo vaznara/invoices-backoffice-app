@@ -1,41 +1,91 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+//@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+@import '../node_modules/bootstrap/scss/functions';
+@import '../node_modules/bootstrap/scss/variables';
+@import '../node_modules/bootstrap/scss/variables';
+@import '../node_modules/bootstrap/scss/variables-dark';
+
+@import '../node_modules/bootstrap/scss/maps';
+@import '../node_modules/bootstrap/scss/mixins';
+@import '../node_modules/bootstrap/scss/root';
+@import '../node_modules/bootstrap/scss/utilities';
+@import '../node_modules/bootstrap/scss/reboot';
+@import '../node_modules/bootstrap/scss/type';
+@import '../node_modules/bootstrap/scss/images';
+@import '../node_modules/bootstrap/scss/containers';
+@import '../node_modules/bootstrap/scss/grid';
+@import '../node_modules/bootstrap/scss/helpers';
+
+@import '../node_modules/bootstrap/scss/utilities/api';
+
+// Uncomment as needed
+// @import '../node_modules/bootstrap/scss/tables';
+//@import '../node_modules/bootstrap/scss/forms';
+//@import '../node_modules/bootstrap/scss/buttons';
+//@import '../node_modules/bootstrap/scss/transitions';
+//@import '../node_modules/bootstrap/scss/dropdown';
+//@import '../node_modules/bootstrap/scss/button-group';
+//@import '../node_modules/bootstrap/scss/nav';
+//@import '../node_modules/bootstrap/scss/navbar';
+// @import '../node_modules/bootstrap/scss/card';
+//@import '../node_modules/bootstrap/scss/accordion';
+//@import '../node_modules/bootstrap/scss/breadcrumb';
+// @import '../node_modules/bootstrap/scss/pagination';
+// @import '../node_modules/bootstrap/scss/badge';
+//@import '../node_modules/bootstrap/scss/alert';
+// @import '../node_modules/bootstrap/scss/progress';
+//@import '../node_modules/bootstrap/scss/list-group';
+//@import '../node_modules/bootstrap/scss/close';
+// @import '../node_modules/bootstrap/scss/toasts';
+// @import '../node_modules/bootstrap/scss/modal';
+//@import '../node_modules/bootstrap/scss/tooltip';
+// @import '../node_modules/bootstrap/scss/popover';
+//@import '../node_modules/bootstrap/scss/carousel';
+//@import '../node_modules/bootstrap/scss/spinners';
+//@import '../node_modules/bootstrap/scss/offcanvas';
+// @import '../node_modules/bootstrap/scss/placeholders';
+
+// Icons
+@import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
+
+// Angular material
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '@angular/cdk/overlay-prebuilt.css';
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat.core();
+//@include mat.core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$invocies-backoffice-app-primary: mat.define-palette(mat.$indigo-palette);
-$invocies-backoffice-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+//$invoices-backoffice-app-primary: mat.define-palette(mat.$indigo-palette);
+//$invoices-backoffice-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$invocies-backoffice-app-warn: mat.define-palette(mat.$red-palette);
+//$invoices-backoffice-app-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$invocies-backoffice-app-theme: mat.define-light-theme((
-  color: (
-    primary: $invocies-backoffice-app-primary,
-    accent: $invocies-backoffice-app-accent,
-    warn: $invocies-backoffice-app-warn,
-  ),
-  typography: mat.define-typography-config(),
-  density: 0
-));
+//$invoices-backoffice-app-theme: mat.define-light-theme((
+//  color: (
+//    primary: $invoices-backoffice-app-primary,
+//    accent: $invoices-backoffice-app-accent,
+//    warn: $invoices-backoffice-app-warn,
+//  ),
+//  typography: mat.define-typography-config(),
+//  density: 0
+//));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($invocies-backoffice-app-theme);
+//@include mat.all-component-themes($invoices-backoffice-app-theme);
 
 /* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
