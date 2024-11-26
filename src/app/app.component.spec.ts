@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'invocies-backoffice-app' title`, () => {
+  it(`should have the 'invoices-backoffice-app' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('invocies-backoffice-app');
+    expect(app.title).toEqual('invoices-backoffice-app');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, invocies-backoffice-app');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, invoices-backoffice-app');
   });
 });
