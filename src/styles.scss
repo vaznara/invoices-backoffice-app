@@ -4,7 +4,10 @@
 // Plus imports for other components in your app.
 
 @import '../node_modules/bootstrap/scss/functions';
-@import '../node_modules/bootstrap/scss/variables';
+
+// Project variables
+@import '../src/styles/variables';
+
 @import '../node_modules/bootstrap/scss/variables';
 @import '../node_modules/bootstrap/scss/variables-dark';
 
@@ -24,7 +27,7 @@
 // Uncomment as needed
 // @import '../node_modules/bootstrap/scss/tables';
 //@import '../node_modules/bootstrap/scss/forms';
-//@import '../node_modules/bootstrap/scss/buttons';
+@import '../node_modules/bootstrap/scss/buttons';
 //@import '../node_modules/bootstrap/scss/transitions';
 //@import '../node_modules/bootstrap/scss/dropdown';
 //@import '../node_modules/bootstrap/scss/button-group';
