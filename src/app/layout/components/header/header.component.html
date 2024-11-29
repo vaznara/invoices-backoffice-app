@@ -1,1 +1,151 @@
-<header class="header"></header>
+<header class="header py-3 d-flex justify-content-between align-items-center">
+  <div class="logo text-md-center">
+    <a
+      class="navbar-brand fw-bold fs-3"
+      href="#"
+      ><span class="text-primary">Dash</span>Stack</a
+    >
+  </div>
+  <div class="search flex-grow-1 position-relative mx-5 d-none d-md-block">
+    <i class="bi bi-search position-absolute top-50 translate-middle-y text-secondary ps-3"></i>
+    <input
+      class="form-control rounded-pill ps-5 bg-light-subtle"
+      type="text"
+      placeholder="Search"
+      aria-label="Search" />
+  </div>
+  <div class="d-none d-md-block separator flex-grow-1"></div>
+  <button
+    class="btn d-block d-md-none"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#userActionsMenuOffcanvas"
+    aria-controls="userActionsMenu"
+    aria-expanded="false"
+    aria-label="Toggle user navigation">
+    <i class="bi bi-list fs-2"></i>
+  </button>
+  <div class="user-actions d-none d-md-flex gap-5 align-items-center">
+    <div class="user-profile dropdown">
+      <a
+        class="d-flex gap-4 text-decoration-none text-body align-items-center dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        data-bs-target="userMenu"
+        aria-expanded="false"
+        role="button">
+        <div
+          class="user-image rounded-circle"
+          style="background-image: url('assets/userphoto.jpg')"></div>
+        <div class="user-titles">
+          <h5 class="user-fullname fw-bold m-0">Moni Roy</h5>
+          <p class="user-role text-secondary m-0">Admin</p>
+        </div>
+      </a>
+      <ul
+        id="userMenu"
+        class="dropdown-menu shadow p-3">
+        <li>
+          <a
+            class="dropdown-item d-flex gap-2 align-items-center py-2"
+            href="#"
+            ><i class="bi bi-person-fill-gear fs-4 text-primary"></i>Manage Account</a
+          >
+        </li>
+        <li>
+          <a
+            class="dropdown-item d-flex gap-2 align-items-center py-2"
+            href="#"
+            ><i class="bi bi-key-fill fs-4 text-warning"></i>Change Password</a
+          >
+        </li>
+        <li>
+          <a
+            class="dropdown-item d-flex gap-2 align-items-center py-2"
+            href="#"
+            ><i class="bi bi-file-text-fill fs-4 text-info"></i>Activity Log
+          </a>
+        </li>
+        <li>
+          <a
+            class="dropdown-item d-flex gap-2 align-items-center py-2"
+            href="#"
+            ><i class="bi bi-box-arrow-right fs-4 text-danger"></i>Log out
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- User menu offcanvas for mobile -->
+  <div
+    class="offcanvas offcanvas-end"
+    tabindex="-1"
+    id="userActionsMenuOffcanvas"
+    aria-labelledby="userActionsMenuLabel">
+    <div class="offcanvas-header">
+      <h5
+        class="offcanvas-title"
+        id="offcanvasRightLabel">
+        User Menu
+      </h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="user-data d-flex gap-2 align-items-center">
+        <div
+          class="user-image rounded-circle"
+          style="background-image: url('assets/userphoto.jpg')"></div>
+        <div class="user-titles">
+          <h5 class="user-fullname fw-bold m-0">Moni Roy</h5>
+          <p class="user-role text-secondary m-0">Admin</p>
+        </div>
+      </div>
+      <hr />
+      <div class="search position-relative mb-3">
+        <i class="bi bi-search position-absolute top-50 translate-middle-y text-secondary ps-3"></i>
+        <input
+          class="form-control rounded-pill ps-5"
+          type="text"
+          placeholder="Search"
+          aria-label="Search" />
+      </div>
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            href="#"
+            >Manage Account</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#"
+            >Change Password</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#"
+            >Activity Log</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-danger"
+            href="#"
+            >Log out</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- User menu offcanvas for mobile end -->
+</header>
