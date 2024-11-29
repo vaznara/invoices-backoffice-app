@@ -43,3 +43,11 @@ Thumbs.db
 
 .nx/cache
 .nx/workspace-data
+
+# env files
+environments/
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json
