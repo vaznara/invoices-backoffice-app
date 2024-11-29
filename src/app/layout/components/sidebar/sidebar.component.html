@@ -1,1 +1,113 @@
-<p>sidebar works!</p>
+<nav
+  class="nav flex-column nav-pills nav-sidebar position-relative h-100"
+  [@toggleSidebar]="isCompact ? 'collapsed' : 'expanded'">
+  <ul class="nav nav-pills nav-fill text-start flex-column ps-2">
+    <li class="nav-item text-start py-1">
+      <a
+        class="nav-link p-3 active d-flex align-items-center gap-3"
+        aria-current="page"
+        href="#">
+        <span class="item-icon">
+          <i class="bi bi-speedometer fs-4 d-flex"></i>
+        </span>
+        @if (!isCompact) {
+          <span
+            @toggleText
+            class="item-text position-absolute">
+            Dashboard
+          </span>
+        }
+      </a>
+    </li>
+    <li class="nav-item text-start py-1">
+      <a
+        class="nav-link p-3 d-flex align-items-center gap-3"
+        href="#"
+        ><span class="item-icon">
+          <i class="bi bi-receipt d-flex fs-4"></i>
+        </span>
+        @if (!isCompact) {
+          <span
+            @toggleText
+            class="item-text position-absolute">
+            Invoices
+          </span>
+        }
+      </a>
+    </li>
+    <li class="nav-item text-start py-1">
+      <a
+        class="nav-link p-3 d-flex align-items-center gap-3"
+        href="#"
+        ><span class="item-icon">
+          <i class="bi bi-grid fs-4 d-flex"></i>
+        </span>
+        @if (!isCompact) {
+          <span
+            @toggleText
+            class="item-text position-absolute">
+            Products
+          </span>
+        }
+      </a>
+    </li>
+    <li class="nav-item text-start py-1">
+      <a
+        class="nav-link p-3 d-flex align-items-center gap-3"
+        href="#"
+        ><span class="item-icon">
+          <i class="bi bi-person-workspace fs-4 d-flex"></i>
+        </span>
+        @if (!isCompact) {
+          <span
+            @toggleText
+            class="item-text position-absolute">
+            Customers
+          </span>
+        }
+      </a>
+    </li>
+    <hr />
+    <li class="nav-item text-start py-1">
+      <a
+        class="nav-link p-3 d-flex align-items-center gap-3"
+        href="#"
+        ><span class="item-icon">
+          <i class="bi bi-gear fs-4 d-flex"></i>
+        </span>
+        @if (!isCompact) {
+          <span
+            @toggleText
+            class="item-text position-absolute">
+            Settings
+          </span>
+        }
+      </a>
+    </li>
+    <li class="nav-item text-start py-1">
+      <a
+        class="nav-link p-3 d-flex align-items-center gap-3"
+        href="#"
+        ><span class="item-icon">
+          <i class="bi bi-box-arrow-right fs-4 d-flex"></i>
+        </span>
+        @if (!isCompact) {
+          <span
+            @toggleText
+            class="item-text position-absolute">
+            Log out
+          </span>
+        }
+      </a>
+    </li>
+  </ul>
+  <div class="toggle-button position-absolute top-50 translate-middle-y py-3 px-1 rounded-2">
+    <a
+      href="#"
+      (click)="onToggle(); $event.preventDefault()">
+      <i
+        [@rotateArrow]="isCompact ? 'collapsed' : 'expanded'"
+        class="bi bi-caret-right-fill d-flex fs-4"></i>
+    </a>
+  </div>
+</nav>
