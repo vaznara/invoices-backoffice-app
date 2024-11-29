@@ -1,0 +1,84 @@
+<div class="form-top text-center mb-5">
+  <h1>Login to Account</h1>
+  <p class="login-subtitle">Please enter your email and password to continue</p>
+</div>
+<form
+  (ngSubmit)="onSubmit()"
+  [formGroup]="loginForm"
+  class="login-form">
+  <div class="mb-3">
+    <label
+      for="email"
+      class="form-label fs-5"
+      >Email address</label
+    >
+    <input
+      [ngClass]="{
+        'is-invalid': loginForm.get('email')?.touched && loginForm.get('email')?.invalid,
+      }"
+      type="email"
+      class="form-control form-control-lg"
+      id="email"
+      formControlName="email"
+      placeholder="name@example.com" />
+    @if (loginForm.touched) {
+      @if (loginForm.get('email')?.invalid && loginForm.get('email')?.hasError('required')) {
+        <div class="invalid-feedback">Email is required</div>
+      }
+      @if (loginForm.get('email')?.invalid && loginForm.get('email')?.hasError('email')) {
+        <div class="invalid-feedback">Email is invalid</div>
+      }
+    }
+  </div>
+  <div class="mb-3">
+    <label
+      for="password"
+      class="form-label fs-5"
+      >Password</label
+    >
+    <input
+      [ngClass]="{
+        'is-invalid': loginForm.get('password')?.touched && loginForm.get('password')?.invalid,
+      }"
+      type="password"
+      formControlName="password"
+      class="form-control form-control-lg"
+      id="password"
+      placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;" />
+
+    @if (
+      loginForm.touched &&
+      loginForm.get('password')?.invalid &&
+      loginForm.get('password')?.hasError('required')
+    ) {
+      <div class="invalid-feedback">Password is required</div>
+    }
+  </div>
+  <div class="mb-3">
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        formControlName="remember"
+        type="checkbox"
+        value=""
+        id="remember"
+        checked />
+      <label
+        class="form-check-label fs-5"
+        for="remember">
+        Remember password
+      </label>
+    </div>
+  </div>
+  <div class="submit-button d-grid col-6 mx-auto mb-5">
+    <button
+      type="submit"
+      class="btn btn-lg btn-primary">
+      Login
+    </button>
+  </div>
+  <p class="text-secondary text-center">
+    If you forgot your password, or you need to open an account, <br />please contact the
+    administrator
+  </p>
+</form>
