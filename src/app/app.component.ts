@@ -11,10 +11,7 @@ import { TitleService } from './shared/services/title.service';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  constructor(
-    private authService: AuthService,
-    private titleService: TitleService,
-  ) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.authService.checkAuthState();

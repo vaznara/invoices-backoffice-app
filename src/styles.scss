@@ -38,7 +38,7 @@
 //@import '../node_modules/bootstrap/scss/breadcrumb';
 // @import '../node_modules/bootstrap/scss/pagination';
 // @import '../node_modules/bootstrap/scss/badge';
-//@import '../node_modules/bootstrap/scss/alert';
+@import '../node_modules/bootstrap/scss/alert';
 // @import '../node_modules/bootstrap/scss/progress';
 @import '../node_modules/bootstrap/scss/list-group';
 @import '../node_modules/bootstrap/scss/close';
@@ -47,7 +47,7 @@
 //@import '../node_modules/bootstrap/scss/tooltip';
 @import '../node_modules/bootstrap/scss/popover';
 //@import '../node_modules/bootstrap/scss/carousel';
-//@import '../node_modules/bootstrap/scss/spinners';
+@import '../node_modules/bootstrap/scss/spinners';
 @import '../node_modules/bootstrap/scss/offcanvas';
 // @import '../node_modules/bootstrap/scss/placeholders';
 
@@ -95,4 +95,23 @@
 html,
 body {
   height: 100%;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3) !important;
+  border-radius: 6px !important;
+  background-color: var(--bs-light) !important;
+  //margin-bottom: 26px;
+}
+::-webkit-scrollbar {
+  width: 4px !important;
+  height: 4px !important;
+  background-color: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 6px !important;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3) !important;
+  background: var(--bs-dark) !important;
 }

@@ -10,11 +10,12 @@ import {
   trigger,
 } from '@angular/animations';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
   animations: [

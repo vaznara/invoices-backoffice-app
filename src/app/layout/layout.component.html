@@ -4,15 +4,26 @@
   </div>
 </div>
 <div class="container flex-grow-1 overflow-auto">
-  <div class="d-flex h-100">
-    <div class="sidebar-wrapper p-3 ps-0">
+  <div class="d-flex">
+    <div class="sidebar-wrapper sticky-top align-self-start p-3 ps-0">
       <app-sidebar />
     </div>
-    <div class="content-wrapper p-4 flex-grow-1 bg-light-subtle">
+    <div class="content-wrapper p-4 flex-grow-1 bg-light-subtle position-relative">
       @if (titleService.h1Title$ | async; as title) {
         <h1 class="h2 page-title fw-bold mb-5">{{ title }}</h1>
       }
       <router-outlet />
+      @if (isLoading) {
+        <div
+          class="position-absolute start-0 top-0 bg-body opacity-50 w-100 h-100 d-flex align-items-center justify-content-center">
+          <div
+            class="spinner-border"
+            style="width: 3rem; height: 3rem"
+            role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      }
     </div>
   </div>
 </div>

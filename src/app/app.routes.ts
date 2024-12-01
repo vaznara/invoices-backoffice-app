@@ -19,6 +19,13 @@ export const routes: Routes = [
             (c) => c.BootstrapTestComponent,
           ),
       },
+      {
+        path: 'settings',
+        title: 'App settings',
+        data: { h1Title: 'General settings' },
+        loadComponent: () =>
+          import('./pages/settings/settings.component').then((c) => c.SettingsComponent),
+      },
     ],
   },
   {
