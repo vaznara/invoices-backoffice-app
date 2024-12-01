@@ -20,9 +20,21 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'login',
-    title: 'Please login',
-    canActivate: [loggedInGuard],
-    loadComponent: () => import('./pages/login/login.component').then((c) => c.LoginComponent),
+    path: '',
+    loadComponent: () => import('./bg-layout/bg-layout.component').then((c) => c.BgLayoutComponent),
+    children: [
+      {
+        path: 'login',
+        title: 'Please login',
+        canActivate: [loggedInGuard],
+        loadComponent: () => import('./pages/login/login.component').then((c) => c.LoginComponent),
+      },
+      {
+        path: '**',
+        title: 'Oops! Page not found',
+        loadComponent: () =>
+          import('./pages/not-found/not-found.component').then((c) => c.NotFoundComponent),
+      },
+    ],
   },
 ];
