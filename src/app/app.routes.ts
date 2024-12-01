@@ -12,6 +12,8 @@ export const routes: Routes = [
     children: [
       {
         path: 'test',
+        title: 'This is test page',
+        data: { h1Title: 'Test page' },
         loadComponent: () =>
           import('./pages/bootstrap-test/bootstrap-test.component').then(
             (c) => c.BootstrapTestComponent,
@@ -26,12 +28,14 @@ export const routes: Routes = [
       {
         path: 'login',
         title: 'Please login',
+        data: { h1Title: 'Login' },
         canActivate: [loggedInGuard],
         loadComponent: () => import('./pages/login/login.component').then((c) => c.LoginComponent),
       },
       {
         path: '**',
         title: 'Oops! Page not found',
+        data: { h1Title: 'Not found' },
         loadComponent: () =>
           import('./pages/not-found/not-found.component').then((c) => c.NotFoundComponent),
       },

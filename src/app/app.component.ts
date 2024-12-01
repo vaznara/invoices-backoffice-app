@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AuthService } from './shared/services/auth.service';
+import { TitleService } from './shared/services/title.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,10 @@ import { AuthService } from './shared/services/auth.service';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private titleService: TitleService,
+  ) {}
 
   ngOnInit(): void {
     this.authService.checkAuthState();

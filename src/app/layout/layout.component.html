@@ -9,6 +9,9 @@
       <app-sidebar />
     </div>
     <div class="content-wrapper p-4 flex-grow-1 bg-light-subtle">
+      @if (titleService.h1Title$ | async; as title) {
+        <h1 class="h2 page-title fw-bold mb-5">{{ title }}</h1>
+      }
       <router-outlet />
     </div>
   </div>
