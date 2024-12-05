@@ -1,0 +1,13 @@
+.toast-container {
+  --#{$prefix}toast-zindex: #{$zindex-toast};
+  --#{$prefix}toast-spacing: #{$toast-spacing};
+  position: absolute;
+  z-index: var(--#{$prefix}toast-zindex);
+  width: max-content;
+  max-width: 100%;
+  pointer-events: none;
+
+  > :not(:last-child) {
+    margin-bottom: var(--#{$prefix}toast-spacing);
+  }
+}
