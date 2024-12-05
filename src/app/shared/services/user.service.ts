@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '@angular/fire/auth';
-import { ReplaySubject } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,11 +10,11 @@ export class UserService {
 
   constructor() {}
 
-  set currentUser(user: any) {
-    this._currentUser$.next(user);
+  get currentUser$(): Observable<User | null> {
+    return this._currentUser$.asObservable();
   }
 
-  get currentUser$() {
-    return this._currentUser$.asObservable();
+  set currentUser(user: User) {
+    this._currentUser$.next(user);
   }
 }

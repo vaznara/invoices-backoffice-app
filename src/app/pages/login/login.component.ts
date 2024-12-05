@@ -17,7 +17,7 @@ export class LoginComponent {
     private router: Router,
   ) {}
 
-  onLogin($event: { email: string; password: string }) {
+  onLogin($event: { email: string; password: string }): void {
     this.authService
       .login($event.email, $event.password)
       .pipe(concatMap(() => this.router.navigate(['/'])))

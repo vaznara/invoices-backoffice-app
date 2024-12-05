@@ -1,0 +1,24 @@
+<div
+  #toastRef
+  [id]="id"
+  class="toast fade"
+  role="alert"
+  aria-live="assertive"
+  aria-atomic="true">
+  <div class="toast-header text-bg-success">
+    <div class="toast-header-wrapper me-auto">
+      <ng-content select="[toast-header]" />
+    </div>
+    @if (hasCloseButton) {
+      <button
+        (click)="onClose()"
+        type="button"
+        class="btn-close me-2 m-auto"
+        [ngClass]="{ 'btn-close-white': isCloseButtonWhite }"
+        aria-label="Close"></button>
+    }
+  </div>
+  <div class="toast-body">
+    <ng-content select="[toast-body]" />
+  </div>
+</div>

@@ -11,18 +11,32 @@ export const routes: Routes = [
     loadComponent: () => import('./layout/layout.component').then((c) => c.LayoutComponent),
     children: [
       {
-        path: 'test',
+        path: 'settings',
+        title: 'App settings',
+        data: { h1Title: 'General settings' },
         loadComponent: () =>
-          import('./pages/bootstrap-test/bootstrap-test.component').then(
-            (c) => c.BootstrapTestComponent,
-          ),
+          import('./pages/settings/settings.component').then((c) => c.SettingsComponent),
       },
     ],
   },
   {
-    path: 'login',
-    title: 'Please login',
-    canActivate: [loggedInGuard],
-    loadComponent: () => import('./pages/login/login.component').then((c) => c.LoginComponent),
+    path: '',
+    loadComponent: () => import('./bg-layout/bg-layout.component').then((c) => c.BgLayoutComponent),
+    children: [
+      {
+        path: 'login',
+        title: 'Please login',
+        data: { h1Title: 'Login' },
+        canActivate: [loggedInGuard],
+        loadComponent: () => import('./pages/login/login.component').then((c) => c.LoginComponent),
+      },
+      {
+        path: '**',
+        title: 'Oops! Page not found',
+        data: { h1Title: 'Not found' },
+        loadComponent: () =>
+          import('./pages/not-found/not-found.component').then((c) => c.NotFoundComponent),
+      },
+    ],
   },
 ];

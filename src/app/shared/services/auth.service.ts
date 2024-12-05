@@ -33,7 +33,7 @@ export class AuthService {
     );
   }
 
-  logout() {
+  logout(): Observable<void> {
     return from(this.auth.signOut()).pipe(
       tap(() => {
         this.userService.currentUser = null;
