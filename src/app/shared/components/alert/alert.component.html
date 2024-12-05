@@ -1,0 +1,17 @@
+<div
+  #alert
+  [id]="id"
+  class="alert fade show"
+  [attr.class]="alertColor"
+  [ngClass]="{ 'alert-dismissible': isDismissible }"
+  role="alert">
+  <ng-content select="[alert-body]" />
+  {{ text }}
+  @if (isDismissible) {
+    <button
+      (click)="onClose()"
+      type="button"
+      class="btn-close"
+      aria-label="Close"></button>
+  }
+</div>
