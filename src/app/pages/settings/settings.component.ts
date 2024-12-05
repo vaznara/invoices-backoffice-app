@@ -9,12 +9,16 @@ import {
 } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { LoaderService } from '../../shared/services/loader.service';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastComponent } from '../../shared/components/toast/toast.component';
+import { ToastService } from '../../shared/services/toast.service';
+import { AlertComponent } from '../../shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, AsyncPipe],
+  imports: [ReactiveFormsModule, FormsModule, AsyncPipe, NgClass, ToastComponent],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',
 })
@@ -24,13 +28,18 @@ export class SettingsComponent implements OnInit {
     address_1: new FormControl<string>('', [Validators.required]),
     address_2: new FormControl<string>(''),
     phone: new FormControl<string>('', [Validators.required]),
+    email: new FormControl<string>('', [Validators.required, Validators.email]),
     description: new FormControl<string>(''),
   });
+
+  toastId: string = 'successfullySavedToast';
 
   constructor(
     private settingsService: CompanySettingsService,
     public loaderService: LoaderService,
     private destroy: DestroyRef,
+    private snackBar: MatSnackBar,
+    private toastService: ToastService,
   ) {}
 
   ngOnInit() {
@@ -46,6 +55,8 @@ export class SettingsComponent implements OnInit {
     this.settingsService
       .updateSettings(this.settingsForm.value)
       .pipe(takeUntilDestroyed(this.destroy))
-      .subscribe(() => {});
+      .subscribe(() => {
+        this.toastService.open(this.toastId);
+      });
   }
 }

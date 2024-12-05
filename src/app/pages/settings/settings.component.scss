@@ -7,3 +7,8 @@
   height: 5rem;
   background: var(--bs-secondary);
 }
+
+.invalid-control-error,
+.control-error-placeholder {
+  font-size: 0.875em;
+}

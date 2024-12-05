@@ -1,4 +1,4 @@
-<div class="card settings-card rounded-3 p-5">
+<div class="card settings-card rounded-3 px-3 px-md-5 py-5">
   <div class="card-body">
     <div class="row">
       <div class="col">
@@ -16,39 +16,69 @@
         <form
           (ngSubmit)="onSave()"
           [formGroup]="settingsForm">
-          <div class="row mb-5">
+          <div class="row mb-5 flex-column flex-md-row">
             <div class="col">
-              <div class="mb-3">
+              <div class="mb-1">
                 <label
                   for="companyName"
                   class="form-label"
                   >Company name</label
                 >
                 <input
+                  [ngClass]="{
+                    'is-invalid':
+                      settingsForm.get('name')?.touched && settingsForm.get('name')?.invalid,
+                  }"
                   formControlName="name"
                   type="text"
                   class="form-control"
                   id="companyName" />
+                <div class="invalid-control-error mt-1 text-danger">
+                  @if (settingsForm.get('name')?.touched && settingsForm.get('name')?.invalid) {
+                    Name is required
+                  } @else {
+                    &nbsp;
+                  }
+                </div>
               </div>
-              <div class="mb-3">
+              <div class="mb-1">
                 <label
                   for="address1"
                   class="form-label"
                   >Address line 1</label
                 >
                 <input
+                  [ngClass]="{
+                    'is-invalid':
+                      settingsForm.get('address_1')?.touched &&
+                      settingsForm.get('address_1')?.invalid,
+                  }"
                   formControlName="address_1"
                   type="text"
                   class="form-control"
                   id="address1" />
+                <div class="invalid-control-error mt-1 text-danger">
+                  @if (
+                    settingsForm.get('address_1')?.touched && settingsForm.get('address_1')?.invalid
+                  ) {
+                    Address 1 is required
+                  } @else {
+                    &nbsp;
+                  }
+                </div>
               </div>
-              <div class="mb-3">
+              <div class="mb-1">
                 <label
                   for="address2"
                   class="form-label"
                   >Address line 2</label
                 >
                 <input
+                  [ngClass]="{
+                    'is-invalid':
+                      settingsForm.get('address_2')?.touched &&
+                      settingsForm.get('address_2')?.invalid,
+                  }"
                   formControlName="address_2"
                   type="text"
                   class="form-control"
@@ -56,25 +86,69 @@
               </div>
             </div>
             <div class="col">
-              <div class="mb-3">
+              <div class="mb-1">
                 <label
                   for="phone"
                   class="form-label"
                   >Phone</label
                 >
                 <input
+                  [ngClass]="{
+                    'is-invalid':
+                      settingsForm.get('phone')?.touched && settingsForm.get('phone')?.invalid,
+                  }"
                   formControlName="phone"
                   type="tel"
                   class="form-control"
                   id="phone" />
+                <div class="invalid-control-error mt-1 text-danger">
+                  @if (settingsForm.get('phone')?.touched && settingsForm.get('phone')?.invalid) {
+                    Invalid phone number
+                  } @else {
+                    &nbsp;
+                  }
+                </div>
               </div>
-              <div class="mb-3">
+              <div class="mb-1">
+                <label
+                  for="email"
+                  class="form-label"
+                  >Email</label
+                >
+                <input
+                  [ngClass]="{
+                    'is-invalid':
+                      settingsForm.get('email')?.touched && settingsForm.get('email')?.invalid,
+                  }"
+                  formControlName="email"
+                  placeholder="example@example.com"
+                  type="text"
+                  class="form-control"
+                  id="email" />
+                <div class="invalid-control-error mt-1 text-danger">
+                  @if (settingsForm.get('email')?.touched && settingsForm.get('email')?.invalid) {
+                    @if (settingsForm.get('email')?.hasError('email')) {
+                      Invalid email address
+                    } @else {
+                      Email is required
+                    }
+                  } @else {
+                    &nbsp;
+                  }
+                </div>
+              </div>
+              <div class="mb-1">
                 <label
                   for="description"
                   class="form-label"
                   >Description</label
                 >
                 <textarea
+                  [ngClass]="{
+                    'is-invalid':
+                      settingsForm.get('description')?.touched &&
+                      settingsForm.get('description')?.invalid,
+                  }"
                   formControlName="description"
                   class="form-control"
                   rows="5"
@@ -82,13 +156,13 @@
               </div>
             </div>
           </div>
-          <div class="button-wrapper text-center">
+          <div class="button-wrapper text-center col-12 col-md-6 mx-auto">
             <button
               [disabled]="
                 settingsForm.invalid || !settingsForm.dirty || (loaderService.isButtonBusy$ | async)
               "
               type="submit"
-              class="btn btn-primary w-50">
+              class="btn btn-primary w-100 w-md-50">
               @if (loaderService.isButtonBusy$ | async) {
                 <span
                   class="spinner-border spinner-border-sm"
@@ -103,4 +177,18 @@
       </div>
     </div>
   </div>
+</div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <app-toast
+    [id]="toastId"
+    [hasCloseButton]="true"
+    [isCloseButtonWhite]="true">
+    <ng-container toast-header>
+      <div class="d-flex gap-2 align-items-center">
+        <i class="bi bi-check-circle-fill"></i>
+        <h6 class="h6 fw-bold mb-0">Settings saved!</h6>
+      </div>
+    </ng-container>
+    <ng-container toast-body> Your settings have been saved successfully. </ng-container>
+  </app-toast>
 </div>

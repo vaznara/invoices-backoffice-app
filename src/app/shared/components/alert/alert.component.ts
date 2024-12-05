@@ -1,18 +1,14 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
   Input,
-  OnDestroy,
   Output,
   Renderer2,
   ViewChild,
 } from '@angular/core';
 import { BSColor } from '../../interfaces/ui';
 import { NgClass } from '@angular/common';
-import { AlertService } from '../../services/alert.service';
-import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-alert',

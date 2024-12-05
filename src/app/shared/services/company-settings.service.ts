@@ -1,16 +1,6 @@
 import { Injectable } from '@angular/core';
-import { collection, doc, Firestore, getDoc, getFirestore, setDoc } from '@angular/fire/firestore';
-import {
-  BehaviorSubject,
-  concatMap,
-  debounceTime,
-  from,
-  map,
-  of,
-  ReplaySubject,
-  take,
-  tap,
-} from 'rxjs';
+import { doc, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
+import { BehaviorSubject, concatMap, debounceTime, from, map, of, take, tap } from 'rxjs';
 import { LoaderService } from './loader.service';
 
 export interface ICompanySettings {
