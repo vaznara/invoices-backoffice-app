@@ -8,7 +8,7 @@ export const loggedInGuard: CanActivateFn = () => {
   const router = inject(Router);
   return userService.currentUser$.pipe(
     map((user) => {
-      return !!user ? router.parseUrl('/') : true;
+      return user ? router.parseUrl('/') : true;
     }),
   );
 };

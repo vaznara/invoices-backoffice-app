@@ -7,7 +7,7 @@
   aria-atomic="true">
   <div class="toast-header text-bg-success">
     <div class="toast-header-wrapper me-auto">
-      <ng-content select="[toast-header]"></ng-content>
+      <ng-content select="[toast-header]" />
     </div>
     @if (hasCloseButton) {
       <button
@@ -19,6 +19,6 @@
     }
   </div>
   <div class="toast-body">
-    <ng-content select="[toast-body]"></ng-content>
+    <ng-content select="[toast-body]" />
   </div>
 </div>

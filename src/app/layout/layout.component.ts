@@ -6,12 +6,11 @@ import { TitleService } from '../shared/services/title.service';
 import { AsyncPipe } from '@angular/common';
 import { LoaderService } from '../shared/services/loader.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { SnackbarComponent } from '../shared/components/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [HeaderComponent, SidebarComponent, RouterOutlet, AsyncPipe, SnackbarComponent],
+  imports: [HeaderComponent, SidebarComponent, RouterOutlet, AsyncPipe],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })

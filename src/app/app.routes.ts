@@ -11,15 +11,6 @@ export const routes: Routes = [
     loadComponent: () => import('./layout/layout.component').then((c) => c.LayoutComponent),
     children: [
       {
-        path: 'test',
-        title: 'This is test page',
-        data: { h1Title: 'Test page' },
-        loadComponent: () =>
-          import('./pages/bootstrap-test/bootstrap-test.component').then(
-            (c) => c.BootstrapTestComponent,
-          ),
-      },
-      {
         path: 'settings',
         title: 'App settings',
         data: { h1Title: 'General settings' },

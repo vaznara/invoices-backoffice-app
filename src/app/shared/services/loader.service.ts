@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,11 +10,11 @@ export class LoaderService {
 
   constructor() {}
 
-  get isLoading$() {
+  get isLoading$(): Observable<boolean> {
     return this._isLoading$.asObservable();
   }
 
-  get isButtonBusy$() {
+  get isButtonBusy$(): Observable<boolean> {
     return this._isButtonBusy$.asObservable();
   }
 

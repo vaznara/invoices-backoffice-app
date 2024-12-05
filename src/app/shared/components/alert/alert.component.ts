@@ -29,13 +29,13 @@ export class AlertComponent {
 
   constructor(private renderer: Renderer2) {}
 
+  get alertColor(): string {
+    return `alert-${this.color}`;
+  }
+
   onClose(): void {
     this.renderer.removeClass(this.alertElement?.nativeElement, 'show');
     this.renderer.removeClass(this.alertElement?.nativeElement, 'fade');
     this.alertHide.emit();
-  }
-
-  get alertColor(): string {
-    return `alert-${this.color}`;
   }
 }

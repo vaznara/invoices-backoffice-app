@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
 export class NotFoundComponent {
   constructor(private location: Location) {}
 
-  onBackClick() {
+  onBackClick(): void {
     return this.location.back();
   }
 }

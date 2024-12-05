@@ -1,6 +1,16 @@
 import { Injectable } from '@angular/core';
 import { doc, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
-import { BehaviorSubject, concatMap, debounceTime, from, map, of, take, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  concatMap,
+  debounceTime,
+  from,
+  map,
+  Observable,
+  of,
+  take,
+  tap,
+} from 'rxjs';
 import { LoaderService } from './loader.service';
 
 export interface ICompanySettings {
@@ -23,7 +33,7 @@ export class CompanySettingsService {
     private loaderService: LoaderService,
   ) {}
 
-  getSettings() {
+  getSettings(): Observable<ICompanySettings> {
     this.loaderService.isLoading = true;
     return this._settings$.pipe(
       take(1),
@@ -46,7 +56,7 @@ export class CompanySettingsService {
     );
   }
 
-  updateSettings(settings: ICompanySettings) {
+  updateSettings(settings: ICompanySettings): Observable<void> {
     this.loaderService.isButtonBusy = true;
     const docRef = doc(this.db, 'settings/companySettings');
     return from(setDoc(docRef, settings)).pipe(

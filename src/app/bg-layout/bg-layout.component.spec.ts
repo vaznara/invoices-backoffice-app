@@ -8,10 +8,9 @@ describe('BgLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BgLayoutComponent]
-    })
-    .compileComponents();
-    
+      imports: [BgLayoutComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(BgLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,19 +10,19 @@ export class ToastService {
 
   constructor() {}
 
-  get showToast$() {
+  get showToast$(): Observable<string> {
     return this._showToast$.asObservable();
   }
 
-  get hideToast$() {
+  get hideToast$(): Observable<string> {
     return this._hideToast$.asObservable();
   }
 
-  open(id: string) {
+  open(id: string): void {
     this._showToast$.next(id);
   }
 
-  hide(id: string) {
+  hide(id: string): void {
     this._hideToast$.next(id);
   }
 }

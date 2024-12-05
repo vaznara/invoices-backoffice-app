@@ -13,7 +13,6 @@ import { AsyncPipe, NgClass } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ToastComponent } from '../../shared/components/toast/toast.component';
 import { ToastService } from '../../shared/services/toast.service';
-import { AlertComponent } from '../../shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-settings',
@@ -42,7 +41,7 @@ export class SettingsComponent implements OnInit {
     private toastService: ToastService,
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.settingsService
       .getSettings()
       .pipe(takeUntilDestroyed(this.destroy))
@@ -51,7 +50,7 @@ export class SettingsComponent implements OnInit {
       });
   }
 
-  onSave() {
+  onSave(): void {
     this.settingsService
       .updateSettings(this.settingsForm.value)
       .pipe(takeUntilDestroyed(this.destroy))

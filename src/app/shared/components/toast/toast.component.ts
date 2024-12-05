@@ -21,12 +21,6 @@ import { NgClass } from '@angular/common';
   styleUrl: './toast.component.scss',
 })
 export class ToastComponent implements AfterViewInit, OnDestroy {
-  private _destroy$ = new Subject<void>();
-
-  private readonly _durationPadding: number = 5;
-  private readonly _toggleClassName: string = 'show';
-  private readonly _transitionClassName: string = 'showing';
-
   @Input() id!: string;
   @Input() timeout: number | null = 5000;
   @Input() hasCloseButton = false;
@@ -38,14 +32,23 @@ export class ToastComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('toastRef') toastElement?: ElementRef<HTMLDivElement>;
 
+  private _destroy$ = new Subject<void>();
   private _timeoutId: NodeJS.Timeout | null = null;
+
+  private readonly _durationPadding: number = 5;
+  private readonly _toggleClassName: string = 'show';
+  private readonly _transitionClassName: string = 'showing';
 
   constructor(
     private renderer: Renderer2,
     private toastService: ToastService,
   ) {}
 
-  onClose() {
+  get isShown(): boolean {
+    return this.toastElement?.nativeElement.classList.contains(this._toggleClassName) ?? false;
+  }
+
+  onClose(): void {
     if (!this.isShown) {
       return;
     }
@@ -54,7 +57,7 @@ export class ToastComponent implements AfterViewInit, OnDestroy {
       clearTimeout(this._timeoutId);
     }
 
-    const completeTransition = () => {
+    const completeTransition = (): void => {
       this.renderer.removeClass(this.toastElement?.nativeElement, this._transitionClassName);
       this.renderer.removeClass(this.toastElement?.nativeElement, this._toggleClassName);
       this.toastHide.emit();
@@ -69,7 +72,7 @@ export class ToastComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  onShow() {
+  onShow(): void {
     if (this.isShown) {
       return;
     }
@@ -78,7 +81,7 @@ export class ToastComponent implements AfterViewInit, OnDestroy {
       clearTimeout(this._timeoutId);
     }
 
-    const completeTransition = () => {
+    const completeTransition = (): void => {
       this.renderer.removeClass(this.toastElement?.nativeElement, this._transitionClassName);
       this.toastShow.emit();
     };
@@ -110,10 +113,6 @@ export class ToastComponent implements AfterViewInit, OnDestroy {
         this.onClose();
       }
     });
-  }
-
-  get isShown(): boolean {
-    return this.toastElement?.nativeElement.classList.contains(this._toggleClassName) ?? false;
   }
 
   ngOnDestroy(): void {

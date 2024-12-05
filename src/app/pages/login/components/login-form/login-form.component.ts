@@ -10,14 +10,14 @@ import { NgClass } from '@angular/common';
   styleUrl: './login-form.component.scss',
 })
 export class LoginFormComponent {
+  @Output() login = new EventEmitter<{ email: string; password: string }>();
+
   loginForm: FormGroup = new FormGroup({
     email: new FormControl<string>('', [Validators.required, Validators.email]),
     password: new FormControl<string>('', [Validators.required]),
   });
 
-  @Output() login = new EventEmitter<{ email: string; password: string }>();
-
-  onSubmit() {
+  onSubmit(): void {
     this.login.emit(this.loginForm.value);
   }
 }
