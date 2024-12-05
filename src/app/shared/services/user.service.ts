@@ -14,7 +14,7 @@ export class UserService {
     return this._currentUser$.asObservable();
   }
 
-  set currentUser(user: User) {
+  set currentUser(user: User | null) {
     this._currentUser$.next(user);
   }
 }
