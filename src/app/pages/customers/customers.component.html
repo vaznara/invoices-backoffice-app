@@ -1,0 +1,14 @@
+<button class="btn btn-primary rounded-circle new-button position-fixed bottom-0 end-0 me-3 mb-3">
+  <i class="bi bi-plus-lg fs-3 d-flex fw-bold align-items-center justify-content-center"></i>
+</button>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  @if (customers) {
+    @for (uid of Object.keys(customers); track $index) {
+      <div class="col">
+        <app-customer-card
+          [customerUid]="uid"
+          [customer]="customers?.[uid]" />
+      </div>
+    }
+  }
+</div>

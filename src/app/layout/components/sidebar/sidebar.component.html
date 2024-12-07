@@ -25,6 +25,9 @@
       <a
         class="nav-link p-3 d-flex align-items-center gap-3"
         href="#"
+        [routerLink]="['/invoices']"
+        [routerLinkActive]="['active']"
+        [ariaCurrentWhenActive]="'page'"
         ><span class="item-icon">
           <i class="bi bi-receipt d-flex fs-4"></i>
         </span>
@@ -57,6 +60,9 @@
       <a
         class="nav-link p-3 d-flex align-items-center gap-3"
         href="#"
+        [routerLink]="['/customers']"
+        [routerLinkActive]="['active']"
+        [ariaCurrentWhenActive]="'page'"
         ><span class="item-icon">
           <i class="bi bi-person-workspace fs-4 d-flex"></i>
         </span>

@@ -11,6 +11,20 @@ export const routes: Routes = [
     loadComponent: () => import('./layout/layout.component').then((c) => c.LayoutComponent),
     children: [
       {
+        path: 'customers',
+        title: 'Customers',
+        data: { h1Title: 'Customers' },
+        loadComponent: () =>
+          import('./pages/customers/customers.component').then((c) => c.CustomersComponent),
+      },
+      {
+        path: 'invoices',
+        title: 'Invoices',
+        data: { h1Title: 'Invoices' },
+        loadComponent: () =>
+          import('./pages/invoices/invoices.component').then((c) => c.InvoicesComponent),
+      },
+      {
         path: 'settings',
         title: 'App settings',
         data: { h1Title: 'General settings' },

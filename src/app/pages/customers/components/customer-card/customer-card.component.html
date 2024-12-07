@@ -1,0 +1,27 @@
+<div
+  class="customer-card card rounded-4"
+  [routerLink]="[customerUid]">
+  <div class="card-body">
+    <h5 class="card-title">{{ customer?.companyLegalName }}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{ customer?.address_1 }}</h6>
+    <p class="card-text">
+      {{ customer?.shortDescription }}
+    </p>
+    <div class="card-actions d-flex flex-wrap">
+      <a
+        appCopyText
+        [href]="'tel:+' + trimmedPhone"
+        (click)="$event.stopPropagation()"
+        class="card-link text-decoration-none d-flex gap-1 flex-nowrap m-0 me-3"
+        ><i class="bi bi-telephone-fill"></i> {{ customer?.phone }}</a
+      >
+      <a
+        appCopyText
+        [href]="'mailto:' + customer?.email"
+        (click)="$event.stopPropagation()"
+        class="card-link text-decoration-none d-flex gap-1 flex-nowrap m-0"
+        ><i class="bi bi-envelope-plus-fill"></i> {{ customer?.email }}</a
+      >
+    </div>
+  </div>
+</div>
