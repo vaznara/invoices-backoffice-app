@@ -23,6 +23,7 @@
 
 .toggle-button {
   right: -2rem;
+  z-index: -1;
   background: var(--bs-body-bg);
   a {
     text-decoration: none;
