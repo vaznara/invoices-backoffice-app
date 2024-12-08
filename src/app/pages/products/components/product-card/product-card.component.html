@@ -1,0 +1,31 @@
+<a
+  href="#"
+  [routerLink]="['/products', product.uid]"
+  class="product-card card text-decoration-none h-100">
+  <img
+    [src]="productImage"
+    class="card-img-top"
+    alt="..." />
+  <div class="card-body">
+    <div class="card-top d-flex justify-content-between">
+      <h5 class="card-title fw-bold">
+        {{ product.name }} <span class="product-sku">({{ product.sku }})</span>
+      </h5>
+      <span class="text-danger fw-bold flex-grow-0">{{
+        product.currentPrice | currency: getCurrencySymbol('GEL', 'narrow')
+      }}</span>
+    </div>
+    <p class="card-text">
+      {{ product.description }}
+    </p>
+    <div class="btn-wrapper d-grid align-self-end">
+      <button
+        (click)="$event.preventDefault(); $event.stopPropagation()"
+        [routerLink]="['/products/edit/' + product.uid]"
+        type="button"
+        class="btn btn-sm btn-primary">
+        Edit product
+      </button>
+    </div>
+  </div>
+</a>

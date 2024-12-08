@@ -11,5 +11,6 @@ import { TitleService } from '../../services/title.service';
 })
 export class ToolbarComponent {
   @Input() actions: TemplateRef<HTMLElement> | null = null;
+  @Input() title?: string;
   constructor(public titleService: TitleService) {}
 }

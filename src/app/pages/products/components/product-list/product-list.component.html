@@ -1,0 +1,15 @@
+<div class="toolbar-wrapper mb-4">
+  <app-toolbar [actions]="actions" />
+  <ng-template #actions>
+    <button
+      [routerLink]="['/products/new']"
+      class="btn btn-primary">
+      Create
+    </button>
+  </ng-template>
+</div>
+<div class="row row-cols-1 row-cols-sm-3 row-cols-lg-5 g-4">
+  @for (product of products; track product.uid) {
+    <div class="col"><app-product-card [product]="product" /></div>
+  }
+</div>

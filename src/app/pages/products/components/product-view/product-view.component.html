@@ -1,0 +1,42 @@
+<div class="toolbar-wrapper mb-4">
+  <app-toolbar [title]="'Product: ' + product?.name + ' (' + product?.sku + ')'" />
+  <!--  <ng-template #actions>-->
+  <!--    <button-->
+  <!--      [routerLink]="['/products']"-->
+  <!--      class="btn btn-outline-primary">-->
+  <!--      Cancel-->
+  <!--    </button>-->
+  <!--  </ng-template>-->
+</div>
+<div class="card settings-card px-3 px-md-5 py-5">
+  <div class="card-body row">
+    <div class="col-12 col-sm-6 col-md-4 mb-4">
+      @if (product) {
+        <app-product-card [product]="product" />
+      }
+    </div>
+    <div class="col-12 col-sm-6 col-md-8">
+      <h3 class="fw-bold text-center mb-3">Price history</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Price</th>
+            <th scope="col">Valid From</th>
+            <th scope="col">Valid To</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (price of productPriceHistory; track $index) {
+            <tr>
+              <td>{{ $index + 1 }}</td>
+              <td>{{ price.price | currency: getCurrencySymbol('GEL', 'narrow') }}</td>
+              <td>{{ price.validFrom | date: 'dd.MM.yyyy HH:mm' }}</td>
+              <td>{{ price?.validTo | date: 'dd.MM.yyyy HH:mm' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
