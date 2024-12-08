@@ -18,6 +18,44 @@ export const routes: Routes = [
           import('./pages/customers/customers.component').then((c) => c.CustomersComponent),
       },
       {
+        path: 'products',
+        title: 'Products',
+        data: { h1Title: 'Products' },
+        loadComponent: () =>
+          import('./pages/products/products.component').then((c) => c.ProductsComponent),
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            loadComponent: () =>
+              import('./pages/products/components/product-list/product-list.component').then(
+                (c) => c.ProductListComponent,
+              ),
+          },
+          {
+            path: 'new',
+            loadComponent: () =>
+              import('./pages/products/components/product-edit/product-edit.component').then(
+                (c) => c.ProductEditComponent,
+              ),
+          },
+          {
+            path: 'edit/:productUid',
+            loadComponent: () =>
+              import('./pages/products/components/product-edit/product-edit.component').then(
+                (c) => c.ProductEditComponent,
+              ),
+          },
+          {
+            path: ':productUid',
+            loadComponent: () =>
+              import('./pages/products/components/product-view/product-view.component').then(
+                (c) => c.ProductViewComponent,
+              ),
+          },
+        ],
+      },
+      {
         path: 'invoices',
         title: 'Invoices',
         data: { h1Title: 'Invoices' },

@@ -1,0 +1,132 @@
+<div class="toolbar-wrapper mb-4">
+  <app-toolbar
+    [actions]="actions"
+    [title]="'Edit product'" />
+  <ng-template #actions>
+    <button
+      [routerLink]="['/products']"
+      class="btn btn-outline-primary">
+      Cancel
+    </button>
+  </ng-template>
+</div>
+<div class="card settings-card px-3 px-md-5 py-5">
+  <div class="card-body">
+    <form
+      [formGroup]="productForm"
+      (ngSubmit)="onSave()">
+      <div class="row gy-1 gx-3">
+        <div class="col-12">
+          <label
+            for="name"
+            class="form-label"
+            >Name</label
+          >
+          <input
+            [ngClass]="{
+              'is-invalid': productForm.get('name')?.invalid && productForm.get('name')?.touched,
+            }"
+            type="text"
+            id="name"
+            class="form-control"
+            formControlName="name" />
+          <div class="invalid-control-error mt-1 text-danger">
+            @if (productForm.get('name')?.invalid && productForm.get('name')?.touched) {
+              Name is required
+            } @else {
+              &nbsp;
+            }
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label
+            for="sku"
+            class="form-label"
+            >SKU</label
+          >
+          <input
+            [ngClass]="{
+              'is-invalid': productForm.get('sku')?.invalid && productForm.get('sku')?.touched,
+            }"
+            type="text"
+            id="sku"
+            class="form-control"
+            formControlName="sku" />
+          <div class="invalid-control-error mt-1 text-danger">
+            @if (productForm.get('sku')?.touched) {
+              @if (
+                productForm.get('sku')?.invalid && productForm.get('sku')?.hasError('required')
+              ) {
+                SKU is required
+              }
+              @if (
+                productForm.get('sku')?.invalid && productForm.get('sku')?.hasError('minlength')
+              ) {
+                SKU must be at least 3 characters long
+              }
+              @if (
+                productForm.get('sku')?.invalid && productForm.get('sku')?.hasError('maxlength')
+              ) {
+                SKU must be at most 10 characters long
+              }
+            } @else {
+              &nbsp;
+            }
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label">Price</label>
+          <input
+            [ngClass]="{
+              'is-invalid':
+                productForm.get('currentPrice')?.invalid &&
+                productForm.get('currentPrice')?.touched,
+            }"
+            type="number"
+            class="form-control"
+            formControlName="currentPrice" />
+          <div class="invalid-control-error mt-1 text-danger">
+            @if (productForm.get('currentPrice')?.touched) {
+              @if (
+                productForm.get('currentPrice')?.invalid &&
+                productForm.get('currentPrice')?.hasError('required')
+              ) {
+                Price is required
+              }
+              @if (
+                productForm.get('currentPrice')?.invalid &&
+                productForm.get('currentPrice')?.hasError('minlength')
+              ) {
+                Price must be minimum 0.1
+              }
+            } @else {
+              &nbsp;
+            }
+          </div>
+        </div>
+
+        <div class="col-12">
+          <label
+            for="description"
+            class="form-label"
+            >Description</label
+          >
+          <textarea
+            id="description"
+            class="form-control"
+            formControlName="description"></textarea>
+          <div class="invalid-control-error mt-1 text-danger">&nbsp;</div>
+        </div>
+        <div class="col-6 mx-auto mt-4">
+          <button
+            type="submit"
+            class="btn btn-primary w-100">
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
