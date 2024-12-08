@@ -1,8 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Customer } from '../../../../shared/interfaces';
 import { RouterLink } from '@angular/router';
 import { CopyTextDirective } from '../../../../shared/directives/copy-text.directive';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialog } from '@angular/material/dialog';
+import { ActionConfirmModalComponent } from '../../../../shared/components/action-confirm-modal/action-confirm-modal.component';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-customer-card',
@@ -12,12 +15,30 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   styleUrl: './customer-card.component.scss',
 })
 export class CustomerCardComponent implements OnInit {
-  @Input() customerUid!: string;
+  private readonly destroy$: Subject<void> = new Subject();
+
   @Input() customer?: Customer;
+  @Output() deleteCustomer: EventEmitter<string> = new EventEmitter();
+
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit() {
-    if (!this.customer || !this.customerUid) {
+    if (!this.customer) {
       throw new Error('Customer is required');
+    }
+  }
+
+  onDelete(uid?: string) {
+    if (uid) {
+      const dialogRef = this.dialog.open(ActionConfirmModalComponent);
+      dialogRef.componentInstance.title = 'Delete customer';
+      dialogRef.componentInstance.message =
+        'Are you sure you want to delete this customer? This action is irreversible!';
+      dialogRef.componentInstance.actionButtonColor = 'danger';
+
+      dialogRef.componentInstance.confirmAction.pipe(takeUntil(this.destroy$)).subscribe(() => {
+        this.deleteCustomer.emit(uid);
+      });
     }
   }
 

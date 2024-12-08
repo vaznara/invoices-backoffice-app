@@ -1,0 +1,36 @@
+<div
+  class="modal"
+  [attr.aria-labelledby]="title ? 'modalLabel' : null"
+  [attr.aria-hidden]="dialogRef.getState() !== 0"
+  tabindex="-1">
+  <div
+    class="modal-dialog"
+    [ngClass]="modalClasses">
+    <div class="modal-content">
+      @if (hasHeader) {
+        <div class="modal-header">
+          <h4
+            class="modal-title fw-bold"
+            id="modalLabel">
+            {{ title }}
+          </h4>
+          @if (hasCloseBtn) {
+            <button
+              (click)="dialogRef.close()"
+              type="button"
+              class="btn-close"
+              aria-label="Close"></button>
+          }
+        </div>
+      }
+      <div class="modal-body">
+        <ng-content select="[modal-body]"></ng-content>
+      </div>
+      @if (hasFooter) {
+        <div class="modal-footer">
+          <ng-content select="[modal-footer]"></ng-content>
+        </div>
+      }
+    </div>
+  </div>
+</div>

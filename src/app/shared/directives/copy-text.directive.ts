@@ -1,6 +1,4 @@
 import {
-  AfterViewInit,
-  ChangeDetectorRef,
   Directive,
   ElementRef,
   EventEmitter,
@@ -25,13 +23,12 @@ export class CopyTextDirective implements OnInit {
     private elementRef: ElementRef,
     private vcr: ViewContainerRef,
     private clipboard: Clipboard,
-    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
     const componentRef = this.vcr.createComponent(CopyTextComponent);
     (this.elementRef.nativeElement as HTMLElement).appendChild(componentRef.location.nativeElement);
-    componentRef.instance.copy.subscribe((res) => {
+    componentRef.instance.copy.subscribe(() => {
       const textToCopy: string = this.elementRef.nativeElement.textContent;
       componentRef.instance.copyState = this.clipboard.copy(textToCopy.trim());
     });

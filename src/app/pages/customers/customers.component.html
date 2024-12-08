@@ -1,14 +1,48 @@
-<button class="btn btn-primary rounded-circle new-button position-fixed bottom-0 end-0 me-3 mb-3">
-  <i class="bi bi-plus-lg fs-3 d-flex fw-bold align-items-center justify-content-center"></i>
-</button>
+<div class="toolbar-wrapper mb-4">
+  <app-toolbar [actions]="actions" />
+  <ng-template #actions>
+    <button
+      (click)="onCreate()"
+      class="btn btn-primary">
+      Create
+    </button>
+  </ng-template>
+</div>
 <div class="row row-cols-1 row-cols-md-2 g-4">
-  @if (customers) {
-    @for (uid of Object.keys(customers); track $index) {
+  @if (customers?.length) {
+    @for (customer of customers; track customer.uid) {
       <div class="col">
         <app-customer-card
-          [customerUid]="uid"
-          [customer]="customers?.[uid]" />
+          [customer]="customer"
+          (deleteCustomer)="onDelete($event)"
+          (click)="onCardClick(customer)" />
       </div>
     }
   }
+</div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <app-toast
+    [id]="successToastId"
+    [hasCloseButton]="true"
+    [isCloseButtonWhite]="true">
+    <ng-container toast-header>
+      <div class="d-flex gap-2 align-items-center">
+        <i class="bi bi-check-circle-fill"></i>
+        <h6 class="h6 fw-bold mb-0">Customer saved!</h6>
+      </div>
+    </ng-container>
+    <ng-container toast-body> Customer data have been saved successfully. </ng-container>
+  </app-toast>
+  <app-toast
+    [id]="deleteToastId"
+    [hasCloseButton]="true"
+    [isCloseButtonWhite]="true">
+    <ng-container toast-header>
+      <div class="d-flex gap-2 align-items-center">
+        <i class="bi bi-check-circle-fill"></i>
+        <h6 class="h6 fw-bold mb-0">Customer deleted!</h6>
+      </div>
+    </ng-container>
+    <ng-container toast-body> Customer data have been deleted successfully. </ng-container>
+  </app-toast>
 </div>

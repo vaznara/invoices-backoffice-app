@@ -1,0 +1,19 @@
+<app-modal [title]="title">
+  <ng-container modal-body>
+    <p class="fs-5">{{ message }}</p>
+  </ng-container>
+  <ng-container modal-footer>
+    <div class="action-footer d-flex flex-column flex-md-row gap-2">
+      <button
+        (click)="onConfirm()"
+        class="btn btn-{{ actionButtonColor }} confirm-button">
+        Confirm
+      </button>
+      <button
+        (click)="onCancel()"
+        class="btn btn-outline-primary cancel-button">
+        Cancel
+      </button>
+    </div>
+  </ng-container>
+</app-modal>
