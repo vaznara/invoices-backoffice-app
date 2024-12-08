@@ -1,0 +1,8 @@
+<div class="toolbar d-flex flex-row align-items-center">
+  @if (titleService.h1Title$ | async; as title) {
+    <h1 class="h2 page-title fw-bold">{{ title }}</h1>
+  }
+  <div class="separator flex-grow-1"></div>
+  <ng-container [ngTemplateOutlet]="actions"></ng-container>
+</div>
+<hr />

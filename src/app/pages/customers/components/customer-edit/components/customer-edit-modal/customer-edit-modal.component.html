@@ -1,0 +1,19 @@
+<app-modal
+  [title]="customer ? 'Edit customer' : 'Create customer'"
+  [size]="'xl'"
+  [isFullscreen]="true"
+  [fullScreenOnSize]="'md'"
+  [isVerticallyCentered]="true"
+  [isScrollable]="true"
+  [hasFooter]="false"
+  [dialogRef]="dialogRef"
+  (closeModal)="onClose()">
+  <ng-container modal-body>
+    <div class="form-wrapper p-5">
+      <app-customer-edit
+        [customer]="customer"
+        (update)="dialogRef.close()"
+        (create)="dialogRef.close()" />
+    </div>
+  </ng-container>
+</app-modal>

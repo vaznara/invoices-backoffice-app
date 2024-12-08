@@ -1,0 +1,36 @@
+// Base class
+.mat-mdc-tooltip {
+  --#{$prefix}tooltip-max-width: #{$tooltip-max-width};
+  --#{$prefix}tooltip-padding-x: #{$tooltip-padding-x};
+  --#{$prefix}tooltip-padding-y: #{$tooltip-padding-y};
+  --#{$prefix}tooltip-margin: #{$tooltip-margin};
+  @include rfs($tooltip-font-size, --#{$prefix}tooltip-font-size);
+  --#{$prefix}tooltip-color: #{$tooltip-color};
+  --#{$prefix}tooltip-bg: #{$tooltip-bg};
+  --#{$prefix}tooltip-border-radius: #{$tooltip-border-radius};
+  --#{$prefix}tooltip-opacity: #{$tooltip-opacity};
+  --#{$prefix}tooltip-arrow-width: #{$tooltip-arrow-width};
+  --#{$prefix}tooltip-arrow-height: #{$tooltip-arrow-height};
+  // scss-docs-end tooltip-css-vars
+
+  display: block;
+  margin: var(--#{$prefix}tooltip-margin);
+  @include deprecate('`$tooltip-margin`', 'v5', 'v5.x', true);
+  // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
+  // So reset our font and text properties to avoid inheriting weird values.
+  @include reset-text();
+  @include font-size(var(--#{$prefix}tooltip-font-size));
+  // Allow breaking very long words so they don't overflow the tooltip's bounds
+  word-wrap: break-word;
+}
+
+// Wrapper for the tooltip content
+.mat-mdc-tooltip .mdc-tooltip__surface {
+  max-width: var(--#{$prefix}tooltip-max-width) !important;
+  padding: var(--#{$prefix}tooltip-padding-y) var(--#{$prefix}tooltip-padding-x) !important;
+  color: var(--#{$prefix}tooltip-color) !important;
+  text-align: center !important;
+  background-color: var(--#{$prefix}tooltip-bg) !important;
+  border-radius: var(--#{$prefix}tooltip-border-radius) !important;
+  //@include border-radius(var(--#{$prefix}tooltip-border-radius));
+}

@@ -1,0 +1,10 @@
+<button
+  (click)="onClick(tooltip); $event.preventDefault(); $event.stopPropagation()"
+  #tooltip="matTooltip"
+  matTooltipHideDelay="2000"
+  matTooltip="Text copied successfully"
+  (mouseenter)="$event.stopImmediatePropagation()"
+  (mouseleave)="$event.stopImmediatePropagation()"
+  class="btn p-0 px-1">
+  <i class="bi bi-copy text-primary"></i>
+</button>

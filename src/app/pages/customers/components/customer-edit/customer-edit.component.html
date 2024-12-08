@@ -1,0 +1,187 @@
+<form
+  [formGroup]="customerForm"
+  (ngSubmit)="onSubmit()">
+  <div class="row gy-1 gx-3">
+    <div class="col-md-6">
+      <label
+        for="companyLegalName"
+        class="form-label"
+        >Company Legal Name</label
+      >
+      <input
+        [ngClass]="{
+          'is-invalid':
+            customerForm.get('companyLegalName')?.touched &&
+            customerForm.get('companyLegalName')?.invalid,
+        }"
+        type="text"
+        id="companyLegalName"
+        class="form-control"
+        formControlName="companyLegalName"
+        placeholder="Enter company legal name" />
+      <div class="invalid-control-error mt-1 text-danger">
+        @if (
+          customerForm.get('companyLegalName')?.invalid &&
+          customerForm.get('companyLegalName')?.touched
+        ) {
+          Company name is required
+        } @else {
+          &nbsp;
+        }
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label
+        for="tin"
+        class="form-label"
+        >Tax Identification Number (TIN)</label
+      >
+      <input
+        [ngClass]="{
+          'is-invalid': customerForm.get('tin')?.touched && customerForm.get('tin')?.invalid,
+        }"
+        type="text"
+        id="tin"
+        class="form-control"
+        formControlName="tin"
+        placeholder="Enter TIN" />
+      <div class="invalid-control-error mt-1 text-danger">
+        @if (customerForm.get('tin')?.invalid && customerForm.get('tin')?.touched) {
+          TIN is required
+        } @else {
+          &nbsp;
+        }
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label
+        for="address_1"
+        class="form-label"
+        >Address 1</label
+      >
+      <input
+        [ngClass]="{
+          'is-invalid':
+            customerForm.get('address_1')?.touched && customerForm.get('address_1')?.invalid,
+        }"
+        type="text"
+        id="address_1"
+        class="form-control"
+        formControlName="address_1"
+        placeholder="Enter address line 1" />
+      <div class="invalid-control-error mt-1 text-danger">
+        @if (customerForm.get('address_1')?.invalid && customerForm.get('address_1')?.touched) {
+          Address line 1 is required
+        } @else {
+          &nbsp;
+        }
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label
+        for="address_2"
+        class="form-label"
+        >Address 2</label
+      >
+      <input
+        [ngClass]="{
+          'is-invalid':
+            customerForm.get('address_2')?.touched && customerForm.get('address_2')?.invalid,
+        }"
+        type="text"
+        id="address_2"
+        class="form-control"
+        formControlName="address_2"
+        placeholder="Enter address line 2 (optional)" />
+      <div class="invalid-control-error mt-1 text-danger">&nbsp;</div>
+    </div>
+
+    <div class="col-md-6">
+      <label
+        for="email"
+        class="form-label"
+        >Email</label
+      >
+      <input
+        [ngClass]="{
+          'is-invalid': customerForm.get('email')?.invalid && customerForm.get('email')?.touched,
+        }"
+        type="email"
+        id="email"
+        class="form-control"
+        formControlName="email"
+        placeholder="Enter email" />
+      <div class="invalid-control-error mt-1 text-danger">
+        @if (customerForm.get('email')?.touched) {
+          @if (customerForm.get('email')?.invalid && customerForm.get('email')?.hasError('email')) {
+            Email is invalid
+          }
+          @if (
+            customerForm.get('email')?.invalid && customerForm.get('email')?.hasError('required')
+          ) {
+            Email is required
+          }
+        } @else {
+          &nbsp;
+        }
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label
+        for="phone"
+        class="form-label"
+        >Phone</label
+      >
+      <input
+        [ngClass]="{
+          'is-invalid': customerForm.get('phone')?.invalid && customerForm.get('phone')?.touched,
+        }"
+        type="text"
+        id="phone"
+        class="form-control"
+        formControlName="phone"
+        placeholder="Enter phone number" />
+      <div class="invalid-control-error mt-1 text-danger">
+        @if (customerForm.get('phone')?.invalid && customerForm.get('phone')?.touched) {
+          Address line 2 is required
+        } @else {
+          &nbsp;
+        }
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label
+        for="shortDescription"
+        class="form-label"
+        >Short Description</label
+      >
+      <textarea
+        id="shortDescription"
+        class="form-control"
+        formControlName="shortDescription"
+        placeholder="Enter a short description (optional)"></textarea>
+      <div class="invalid-control-error mt-1 text-danger">&nbsp;</div>
+    </div>
+
+    <div class="col-md-6 mx-auto mt-4">
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="customerForm.invalid">
+        @if (loaderService.isButtonBusy$ | async) {
+          <span
+            class="spinner-border spinner-border-sm"
+            aria-hidden="true"></span>
+          <span role="status">&nbsp;Please wait...</span>
+        } @else {
+          Save
+        }
+      </button>
+    </div>
+  </div>
+</form>
