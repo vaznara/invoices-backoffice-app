@@ -1,0 +1,23 @@
+<div class="autocomplete-wrapper position-relative">
+  <input
+    type="text"
+    class="form-control"
+    [formControl]="autocompleteControl"
+    [attr.aria-expanded]="isOpen" />
+  <ul
+    class="dropdown-menu w-100"
+    [ngClass]="{ show: isOpen }"
+    appClickOutside
+    (outsideClick)="hideDropdown()">
+    @for (option of options; track $index) {
+      <li>
+        <a
+          class="dropdown-item"
+          (click)="onSelect(option); $event.preventDefault()"
+          href="#"
+          >{{ option[valueKey] }}</a
+        >
+      </li>
+    }
+  </ul>
+</div>
