@@ -1,0 +1,48 @@
+<input
+  type="text"
+  readonly
+  role="button"
+  [value]="selectedOption"
+  [class.disabled]="isDisabled"
+  [placeholder]="placeholder"
+  [attr.aria-label]="label"
+  (blur)="onTouched()"
+  (click)="toggle()"
+  class="form-select" />
+<ul
+  class="dropdown-menu w-100"
+  [ngClass]="{ show: isOpen }">
+  @if (isSearchable || isFilterable) {
+    <li class="filter-input d-flex gap-1">
+      <div class="dropdown-item position-relative search-dropdown-item">
+        <i class="bi bi-search position-absolute top-50 start-0 translate-middle"></i
+        ><input
+          #searchInput
+          class="form-control border-0 ps-5"
+          type="text"
+          [formControl]="searchControl" />
+        @if (searchControl.value) {
+          <a
+            href="#"
+            role="button"
+            class="clear-input-btn btn p-0 position-absolute top-50 end-0 translate-middle"
+            (click)="searchControl.setValue(''); $event.preventDefault(); searchInput.focus()">
+            <i class="bi bi-x-lg"></i>
+          </a>
+        }
+      </div>
+    </li>
+    <li><hr class="dropdown-divider" /></li>
+  }
+  @for (option of filteredOptions; track option[idKey]) {
+    <li>
+      <a
+        class="dropdown-item"
+        [class.disabled]="option.isDisabled"
+        (click)="onChange(option); $event.preventDefault()"
+        href="#"
+        >{{ option[valueKey] }}</a
+      >
+    </li>
+  }
+</ul>
