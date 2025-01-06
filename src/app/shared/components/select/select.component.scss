@@ -1,0 +1,31 @@
+:host {
+  position: relative;
+}
+.form-select {
+  cursor: pointer;
+}
+
+.form-control:focus,
+.form-control:active,
+.form-control:hover,
+.search-dropdown-item:focus,
+.search-dropdown-item:active,
+.search-dropdown-item:hover {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.search-dropdown-item:focus,
+.search-dropdown-item:active,
+.search-dropdown-item:hover {
+  background-color: transparent;
+  color: inherit;
+}
+
+.bi-search {
+  left: 2rem !important;
+}
+
+.clear-input-btn {
+  right: 2rem !important;
+}

@@ -18,15 +18,17 @@
   <button
     class="btn d-block d-md-none"
     type="button"
-    data-bs-toggle="offcanvas"
-    data-bs-target="#userActionsMenuOffcanvas"
+    [appToggleBootstrapEl]="userActionsMenuOffcanvas"
+    [dismissEl]="userActionsMenuOffcanvasDismiss"
     aria-controls="userActionsMenu"
     aria-expanded="false"
     aria-label="Toggle user navigation">
     <i class="bi bi-list fs-2"></i>
   </button>
   <div class="user-actions d-none d-md-flex gap-5 align-items-center">
-    <div class="user-profile dropdown">
+    <div
+      class="user-profile dropdown"
+      [appToggleBootstrapEl]="userMenu">
       <a
         class="d-flex gap-4 text-decoration-none text-body align-items-center dropdown-toggle"
         type="button"
@@ -43,6 +45,7 @@
         </div>
       </a>
       <ul
+        #userMenu
         id="userMenu"
         class="dropdown-menu shadow p-3">
         <li>
@@ -81,6 +84,7 @@
   <div
     class="offcanvas offcanvas-end"
     tabindex="-1"
+    #userActionsMenuOffcanvas
     id="userActionsMenuOffcanvas"
     aria-labelledby="userActionsMenuLabel">
     <div class="offcanvas-header">
@@ -92,7 +96,7 @@
       <button
         type="button"
         class="btn-close"
-        data-bs-dismiss="offcanvas"
+        #userActionsMenuOffcanvasDismiss
         aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
