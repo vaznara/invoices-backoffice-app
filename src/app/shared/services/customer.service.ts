@@ -10,6 +10,8 @@ import {
   query,
   orderBy,
   getDocs,
+  where,
+  limit,
 } from '@angular/fire/firestore';
 import { LoaderService } from './loader.service';
 import { Customer } from '../interfaces';
@@ -37,6 +39,27 @@ export class CustomerService {
         }),
       ),
       tap(() => (this.loaderService.isLoading = false)),
+    );
+  }
+
+  searchCustomersByName(searchText: string) {
+    // this.loaderService.isLoading = true;
+    const q = query(
+      collection(this.db, 'customers'),
+
+      where('companyLegalName', '>=', searchText),
+      where('companyLegalName', '<=', searchText + '~'),
+      orderBy('createdAt', 'desc'),
+      limit(5),
+    );
+    return from(getDocs(q)).pipe(
+      map((res) =>
+        res.docs.map((x) => {
+          return {
+            ...x.data(),
+          };
+        }),
+      ),
     );
   }
 
